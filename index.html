@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouquet d'anniversaire · Iréne 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Josefin+Sans:wght@100;200;300;400&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<audio id="music" loop><source src="musique/y2mate (mp3cut.net).mp3" type="audio/mp3"></audio>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-trail" id="cursorTrail"></div>
+<canvas id="particles"></canvas>
+
+<button class="music-btn" onclick="toggleMusic()">
+    <div class="music-dot"></div>
+    <span>Now Playing</span>
+</button>
+
+<!-- ============================================================ HERO -->
+<section class="hero" id="hero">
+    <!-- Parallax layers (moved by JS) -->
+    <div class="parallax-layer layer-1" id="parallax1"></div>
+    <div class="parallax-layer layer-2" id="parallax2"></div>
+    <div class="parallax-layer layer-3" id="parallax3">
+        <div class="ring ring-1"></div>
+        <div class="ring ring-2"></div>
+        <div class="ring ring-3"></div>
+    </div>
+
+    <!-- Floating decorative emojis -->
+    <div class="float-el" 
+    style="left:7%;top:20%;animation-duration:12s;font-size:2rem;">🎉</div>
+    <div class="float-el" style="left:90%;top:15%;animation-duration:9s;font-size:1.5rem;animation-delay:2s;">✨</div>
+    <div class="float-el" style="left:15%;top:60%;animation-duration:14s;font-size:1.8rem;animation-delay:4s;">🎂</div>
+    <div class="float-el" style="left:80%;top:55%;animation-duration:11s;animation-delay:1s;">🎁</div>
+    <div class="float-el" style="left:50%;top:10%;animation-duration:16s;animation-delay:3s;font-size:1.4rem;">💫</div>
+    <div class="float-el" style="left:4%;top:80%;animation-duration:10s;animation-delay:5s;font-size:1.3rem;">🌼</div>
+
+    <!-- Main content -->
+    <div class="hero-content">
+        <div class="hero-badge">
+            <span>✨</span>
+            <span>17 Avril 2026</span>
+            <span>✨</span>
+        </div>
+
+        <h1 class="hero-name">Iréne</h1>
+
+        <p class="hero-sub">une bougie de plus, un printemps de grâce</p>
+
+        <div class="hero-divider">
+            <div class="hero-divider-line"></div>
+            <span class="hero-divider-icon">⚘</span>
+            <div class="hero-divider-line"></div>
+        </div>
+
+        <!-- Date & Venue Pills -->
+        <div class="hero-pills">
+            <div class="pill">
+                <span class="pill-main">17 Avril</span>
+                <span class="pill-sub">2026</span>
+            </div>
+            <div class="pill">
+                <span class="pill-main">Efoulan</span>
+                <span class="pill-sub">Pont · Jardin</span>
+            </div>
+            <div class="pill">
+                <span class="pill-main">16h00</span>
+                <span class="pill-sub">Heure de début</span>
+            </div>
+        </div>
+
+        <!-- Dress Code -->
+        <div class="dresscode-banner">
+            <div class="dresscode-inner">
+                <span class="dresscode-icon">👗</span>
+                <div class="dresscode-text">
+                    <span class="dresscode-label">Dress Code</span>
+                    <span class="dresscode-colors">
+                        <span class="dc-white">White</span>
+                        <span class="dc-amp">&</span>
+                        <span class="dc-pink">Pink</span>
+                    </span>
+                </div>
+                <span class="dresscode-icon">🌸</span>
+            </div>
+        </div>
+
+        <!-- Countdown -->
+        <div class="countdown-section">
+            <p class="countdown-label">✦ décompte floral ✦</p>
+            <div class="countdown-flex">
+                <div class="count-card">
+                    <div class="count-num" id="days">0</div>
+                    <div class="count-unit">jours</div>
+                </div>
+                <div class="count-card">
+                    <div class="count-num" id="hours">0</div>
+                    <div class="count-unit">heures</div>
+                </div>
+                <div class="count-card">
+                    <div class="count-num" id="minutes">0</div>
+                    <div class="count-unit">minutes</div>
+                </div>
+                <div class="count-card">
+                    <div class="count-num" id="seconds">0</div>
+                    <div class="count-unit">secondes</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Download -->
+        <div class="download-wrap">
+            <button class="btn-download" onclick="downloadInvitation()">
+                <!-- <span>📩</span> -->
+                <span>Télécharger l'invitation</span>
+            </button>
+            <p class="btn-hint">fichier PDF · prêt à imprimer</p>
+        </div>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="scroll-hint">
+        <div class="scroll-arrow"></div>
+        <span class="scroll-text">Défiler</span>
+    </div>
+</section>
+
+<div class="neon-divider"></div>
+
+<!-- ============================================================ GALLERY -->
+<section class="gallery-section" id="gallery">
+    <div class="section-header">
+        <p class="section-eyebrow">✦ souvenirs précieux ✦</p>
+        <h2 class="section-title">instants de lumière</h2>
+        <div class="section-line">
+            <div class="section-line-bar"></div>
+            <span style="color:var(--neon-lilac);filter:drop-shadow(0 0 6px var(--neon-lilac))">✧</span>
+            <div class="section-line-bar right"></div>
+        </div>
+    </div>
+
+    <div class="gallery-flex">
+        <!-- Photo 1 -->
+        <div class="gallery-item" id="gItem1">
+            <div class="gallery-neon-corner"></div>
+            <div class="gallery-neon-corner-bl"></div>
+            <img src="images/irene.jpeg" alt="portrait Iréne" loading="lazy">
+            <div class="gallery-item-label">
+                <span>Iréne ✦</span>
+                <span style="font-size:0.65rem;letter-spacing:2px;color:rgba(212,184,208,0.5);font-family:'Josefin Sans',sans-serif;">portrait</span>
+            </div>
+        </div>
+
+        <!-- Photo 2 -->
+        <div class="gallery-item" id="gItem2">
+            <div class="gallery-neon-corner"></div>
+            <div class="gallery-neon-corner-bl"></div>
+            <img src="images/irene1.jpeg" alt="sourire Iréne" loading="lazy">
+            <div class="gallery-item-label">
+                <span>printemps ✦</span>
+                <span style="font-size:0.65rem;letter-spacing:2px;color:rgba(212,184,208,0.5);font-family:'Josefin Sans',sans-serif;">sourire</span>
+            </div>
+        </div>
+    </div>
+
+    <p style="text-align:center;margin-top:40px;font-family:'Dancing Script',cursive;font-size:1.2rem;color:var(--neon-peach);opacity:0.7;filter:drop-shadow(0 0 8px rgba(255,179,198,0.4))">
+        dansons sous les lumières du printemps 🌸
+    </p>
+</section>
+
+<div class="neon-divider"></div>
+
+<!-- Hidden card -->
+<div id="invitationCard">
+    <h1>Iréne — 17 avril 2026</h1>
+    <p>Efoulan Pont · 16h00</p>
+    <p>Tenue florale souhaitée</p>
+</div>
+
+<footer>
+    <p class="footer-text">avec <span class="footer-glow">♡</span> · Iréne t'invite · <span class="footer-glow">2026</span></p>
+    <p class="footer-text" style="margin-top:8px">✨ A l'ocasion de mon 20ème anniversaire ✨</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

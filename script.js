@@ -1,33 +1,33 @@
 /* ---- Cursor ---- */
 const cursor = document.getElementById('cursor');
-const trail  = document.getElementById('cursorTrail');
+const trail = document.getElementById('cursorTrail');
 let mx = 0, my = 0, tx = 0, ty = 0;
 document.addEventListener('mousemove', e => {
     mx = e.clientX; my = e.clientY;
     cursor.style.left = (mx - 9) + 'px';
-    cursor.style.top  = (my - 9) + 'px';
+    cursor.style.top = (my - 9) + 'px';
 });
 function animateTrail() {
     tx += (mx - tx) * 0.12;
     ty += (my - ty) * 0.12;
     trail.style.left = (tx - 20) + 'px';
-    trail.style.top  = (ty - 20) + 'px';
+    trail.style.top = (ty - 20) + 'px';
     requestAnimationFrame(animateTrail);
 }
 animateTrail();
 
 /* ---- Particles ---- */
 const canvas = document.getElementById('particles');
-const ctx    = canvas.getContext('2d');
+const ctx = canvas.getContext('2d');
 let W, H, pts = [];
 function resize() {
-    W = canvas.width  = window.innerWidth;
+    W = canvas.width = window.innerWidth;
     H = canvas.height = window.innerHeight;
 }
 resize();
 window.addEventListener('resize', resize);
 
-const COLORS = ['#ff6eb4','#d896ff','#ffb3c6','#ff3d8b','#ffd700'];
+const COLORS = ['#ff6eb4', '#d896ff', '#ffb3c6', '#ff3d8b', '#ffd700'];
 function mkPt() {
     return {
         x: Math.random() * W,
@@ -76,27 +76,27 @@ const eventDate = new Date("April 17, 2026 00:00:00").getTime();
 function updateCountdown() {
     const distance = eventDate - Date.now();
     if (distance < 0) {
-        ['days','hours','minutes','seconds'].forEach(id => document.getElementById(id).textContent = '0');
+        ['days', 'hours', 'minutes', 'seconds'].forEach(id => document.getElementById(id).textContent = '0');
         return;
     }
-    document.getElementById('days').textContent    = Math.floor(distance / 86400000);
-    document.getElementById('hours').textContent   = Math.floor((distance % 86400000) / 3600000);
-    document.getElementById('minutes').textContent = Math.floor((distance % 3600000)  / 60000);
-    document.getElementById('seconds').textContent = Math.floor((distance % 60000)    / 1000);
+    document.getElementById('days').textContent = Math.floor(distance / 86400000);
+    document.getElementById('hours').textContent = Math.floor((distance % 86400000) / 3600000);
+    document.getElementById('minutes').textContent = Math.floor((distance % 3600000) / 60000);
+    document.getElementById('seconds').textContent = Math.floor((distance % 60000) / 1000);
 }
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
 /* ---- Music ---- */
-window.toggleMusic = function() {
+window.toggleMusic = function () {
     const m = document.getElementById('music');
     if (m.paused) m.play(); else m.pause();
 };
 
 /* ---- Download ---- */
-window.downloadInvitation = function() {
+window.downloadInvitation = function () {
     const a = document.createElement('a');
-    a.href = 'APRIL.pdf';
+    a.href = 'Invitation.pdf';
     a.download = 'Invitation_Irene_Avril2026.pdf';
     document.body.appendChild(a);
     a.click();
@@ -107,8 +107,8 @@ window.downloadInvitation = function() {
 document.querySelectorAll('.gallery-item').forEach(item => {
     item.addEventListener('mousemove', e => {
         const rect = item.getBoundingClientRect();
-        const rx = ((e.clientX - rect.left) / rect.width  - 0.5) * 10;
-        const ry = ((e.clientY - rect.top)  / rect.height - 0.5) * 10;
+        const rx = ((e.clientX - rect.left) / rect.width - 0.5) * 10;
+        const ry = ((e.clientY - rect.top) / rect.height - 0.5) * 10;
         item.style.transform = `perspective(800px) rotateY(${rx}deg) rotateX(${-ry}deg) translateY(-8px) scale(1.01)`;
     });
     item.addEventListener('mouseleave', () => {
